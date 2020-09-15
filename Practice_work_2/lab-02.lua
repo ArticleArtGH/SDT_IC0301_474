@@ -44,7 +44,7 @@ a_b()
 ui.lbl_res.label = a/b
 end
 
-function ui.btn_pi:on_clicked(...)
+--[[function ui.btn_pi:on_clicked(...)
 ui.ent_a.text = math.pi
 ui.ent_b.text = math.pi
 --ui.btn_b.visible = false
@@ -53,12 +53,22 @@ ui.ent_a.text = math.pi;
 elseif ui.ent_b == Gtk_select then
 ui.ent_b.text = math.pi;
 end;
-]]
+
+end]]
+--
+tt = nil
+function ui.ent_a:on_grab_focus(...)
+tt = ui.ent_a
+end
+function ui.ent_b:on_grab_focus(...)
+tt = ui.ent_b
+end
+function ui.btn_pi:on_clicked(...)
+tt.text = math.pi;
 end
 
 function ui.btn_e:on_clicked()
-ui.ent_a.text = 2.7182818284590452353602874713527
-ui.ent_b.text = 2.7182818284590452353602874713527
+tt.text = 2.7182818284590452353602874713527
 end
 
 function ui.btn_clear:on_clicked()
@@ -94,17 +104,15 @@ ui.lbl_res.label = a%b
 end
 
 function ui.btn_abs:on_clicked()
-ui.ent_a.text = math.abs(ui.ent_a.text)
-ui.ent_b.text = math.abs(ui.ent_b.text)
+tt.text = math.abs(ui.ent_a.text)
 ui.lbl_res.label = 0
 end
 
 function ui.btn_plus_minus:on_clicked()
-a_b()
-if a<0 then
-ui.ent_a.text = math.abs(a)
+if tonumber(tt.text)<0 then
+tt.text = math.abs(tonumber(tt.text))
 else
-ui.ent_a.text = -a
+tt.text = -tt.text
 end
 
 if b<0 then
@@ -117,62 +125,60 @@ ui.lbl_res.label = 0
 end
 
 function ui.btn_log:on_clicked()
-a_b()
-ui.lbl_res.label = math.log10(a) 
+ui.lbl_res.label = math.log10(tonumber(tt.text)) 
 end
 
 function ui.btn_ln:on_clicked()
-a_b()
-ui.lbl_res.label = math.log(a)
+ui.lbl_res.label = math.log(tonumber(tt.text))
 end
 
 function ui.btn_sin:on_clicked()
 a_b()
 if ui.btn_deg_rad.label == 'deg' then
-a = math.rad(a)
-ui.lbl_res.label = math.sin(a)
+tt.text = math.rad(tonumber(tt.text))
+ui.lbl_res.label = math.sin(tonumber(tt.text))
 else
-ui.lbl_res.label = math.sin(a)
+ui.lbl_res.label = math.sin(tonumber(tt.text))
 end
 end
 
 function ui.btn_cos:on_clicked()
 a_b()
 if ui.btn_deg_rad.label == 'deg' then
-a = math.rad(a)
-ui.lbl_res.label = math.cos(a)
+tt.text = math.rad(tonumber(tt.text))
+ui.lbl_res.label = math.cos(tonumber(tt.text))
 else
-ui.lbl_res.label = math.cos(a)
+ui.lbl_res.label = math.cos(tonumber(tt.text))
 end
 end
 
 function ui.btn_tg:on_clicked()
 a_b()
 if ui.btn_deg_rad.label == 'deg' then
-a = math.rad(a)
-ui.lbl_res.label = math.tan(a)
+tt.text = math.rad(tonumber(tt.text))
+ui.lbl_res.label = math.tan(tonumber(tt.text))
 else
-ui.lbl_res.label = math.tan(a)
+ui.lbl_res.label = math.tan(tonumber(tt.text))
 end
 end
 
 function ui.btn_ctg:on_clicked()
 a_b()
 if ui.btn_deg_rad.label == 'deg' then
-a = math.rad(a)
-ui.lbl_res.label = 1/math.tan(a)
+tt.text = math.rad(tonumber(tt.text))
+ui.lbl_res.label = 1/math.tan(tonumber(tt.text))
 else
-ui.lbl_res.label = 1/math.tan(a)
+ui.lbl_res.label = 1/math.tan(tonumber(tt.text))
 end
 end
 
 function ui.btn_sec:on_clicked()
 a_b()
 if ui.btn_deg_rad.label == 'deg' then
-a = math.rad(a)
-ui.lbl_res.label = 1/math.cos(a)
+tt.text = math.rad(tonumber(tt.text))
+ui.lbl_res.label = 1/math.cos(tonumber(tt.text))
 else
-ui.lbl_res.label = 1/math.cos(a)
+ui.lbl_res.label = 1/math.cos(tonumber(tt.text))
 end
 end
 
