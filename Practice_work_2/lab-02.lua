@@ -16,12 +16,24 @@ b = tonumber(ui.ent_b.text)
 res = tonumber(ui.lbl_res.label)
 end
 
+tt = nil
+function ui.ent_a:on_grab_focus(...)
+tt = ui.ent_a
+end
+function ui.ent_b:on_grab_focus(...)
+tt = ui.ent_b
+end
+
+function tt_num()
+tt = tonumber(tt.text)
+end
+
 function ui.btn_deg_rad:on_clicked()--в градусах или радианах
-if ui.btn_deg_rad.label == 'deg' then
-ui.btn_deg_rad.label = 'rad'
-else
+if ui.btn_deg_rad.label == 'rad' then
 ui.btn_deg_rad.label = 'deg'
-end; 
+else
+ui.btn_deg_rad.label = 'rad'
+end 
 end
 
 function ui.btn_add:on_clicked(...)
@@ -56,13 +68,7 @@ end;
 
 end]]
 --
-tt = nil
-function ui.ent_a:on_grab_focus(...)
-tt = ui.ent_a
-end
-function ui.ent_b:on_grab_focus(...)
-tt = ui.ent_b
-end
+
 function ui.btn_pi:on_clicked(...)
 tt.text = math.pi;
 end
@@ -75,6 +81,13 @@ function ui.btn_clear:on_clicked()
 ui.ent_a.text = ''
 ui.ent_b.text = ''
 ui.lbl_res.label = 0
+end
+
+function ui.btn_backspace:on_clicked()
+if tt.text ~= nil then
+len = string.len(tt.text)
+tt.text = string.sub(tt.text, 0, len-1)
+end
 end
 
 function ui.btn_expon:on_clicked()
@@ -133,62 +146,62 @@ ui.lbl_res.label = math.log(tonumber(tt.text))
 end
 
 function ui.btn_sin:on_clicked()
-a_b()
-if ui.btn_deg_rad.label == 'deg' then
-tt.text = math.rad(tonumber(tt.text))
-ui.lbl_res.label = math.sin(tonumber(tt.text))
+tt_num()
+if ui.btn_deg_rad.label == 'rad' then
+ui.lbl_res.label = math.sin(tt)
 else
-ui.lbl_res.label = math.sin(tonumber(tt.text))
+tt = math.rad(tt)
+ui.lbl_res.label = math.sin(tt)
 end
 end
 
 function ui.btn_cos:on_clicked()
-a_b()
-if ui.btn_deg_rad.label == 'deg' then
-tt.text = math.rad(tonumber(tt.text))
-ui.lbl_res.label = math.cos(tonumber(tt.text))
+tt_num()
+if ui.btn_deg_rad.label == 'rad' then
+ui.lbl_res.label = math.cos(tt)
 else
-ui.lbl_res.label = math.cos(tonumber(tt.text))
+tt = math.rad(tt)
+ui.lbl_res.label = math.cos(tt)
 end
 end
 
 function ui.btn_tg:on_clicked()
-a_b()
-if ui.btn_deg_rad.label == 'deg' then
-tt.text = math.rad(tonumber(tt.text))
-ui.lbl_res.label = math.tan(tonumber(tt.text))
+tt_num()
+if ui.btn_deg_rad.label == 'rad' then
+ui.lbl_res.label = math.tan(tt)
 else
-ui.lbl_res.label = math.tan(tonumber(tt.text))
+tt = math.rad(tt)
+ui.lbl_res.label = math.tan(tt)
 end
 end
 
 function ui.btn_ctg:on_clicked()
-a_b()
-if ui.btn_deg_rad.label == 'deg' then
-tt.text = math.rad(tonumber(tt.text))
-ui.lbl_res.label = 1/math.tan(tonumber(tt.text))
+tt_num()
+if ui.btn_deg_rad.label == 'rad' then
+ui.lbl_res.label = 1/math.tan(tt)
 else
-ui.lbl_res.label = 1/math.tan(tonumber(tt.text))
+tt = math.rad(tt)
+ui.lbl_res.label = 1/math.tan(tt)
 end
 end
 
 function ui.btn_sec:on_clicked()
-a_b()
-if ui.btn_deg_rad.label == 'deg' then
-tt.text = math.rad(tonumber(tt.text))
-ui.lbl_res.label = 1/math.cos(tonumber(tt.text))
+tt_num()
+if ui.btn_deg_rad.label == 'rad' then
+ui.lbl_res.label = 1/math.cos(tt)
 else
-ui.lbl_res.label = 1/math.cos(tonumber(tt.text))
+tt = math.rad(tt)
+ui.lbl_res.label = 1/math.cos(tt)
 end
 end
 
 function ui.btn_csc:on_clicked()
-a_b()
-if ui.btn_deg_rad.label == 'deg' then
-a = math.rad(a)
-ui.lbl_res.label = 1/math.sin(a)
+tt_num()
+if ui.btn_deg_rad.label == 'rad' then
+ui.lbl_res.label = 1/math.sin(tt)
 else
-ui.lbl_res.label = 1/math.sin(a)
+tt = math.rad(tt)
+ui.lbl_res.label = 1/math.sin(tt)
 end
 end
 

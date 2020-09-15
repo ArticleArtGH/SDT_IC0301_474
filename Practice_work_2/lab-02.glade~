@@ -96,6 +96,26 @@
     <property name="can_focus">False</property>
     <property name="pixbuf">image/calc3.ico</property>
   </object>
+  <object class="GtkImage" id="image6">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">image/calc4.ico</property>
+  </object>
+  <object class="GtkImage" id="image7">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">image/calc1.ico</property>
+  </object>
+  <object class="GtkImage" id="image8">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">image/calc2.ico</property>
+  </object>
+  <object class="GtkImage" id="image9">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="pixbuf">image/calc6.ico</property>
+  </object>
   <object class="GtkWindow" id="wnd">
     <property name="can_focus">False</property>
     <property name="border_width">1</property>
@@ -308,99 +328,6 @@
           </packing>
         </child>
         <child>
-          <object class="GtkBox" id="box_bottom1">
-            <property name="visible">True</property>
-            <property name="can_focus">False</property>
-            <property name="hexpand">True</property>
-            <child>
-              <object class="GtkButton" id="btn_pi">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="valign">baseline</property>
-                <property name="margin_left">1</property>
-                <property name="margin_right">1</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="image">image5</property>
-                <property name="use_underline">True</property>
-                <property name="always_show_image">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btn_e">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="valign">baseline</property>
-                <property name="margin_left">1</property>
-                <property name="margin_right">1</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="image">image6</property>
-                <property name="use_underline">True</property>
-                <property name="always_show_image">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btn_clear">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="valign">baseline</property>
-                <property name="margin_left">1</property>
-                <property name="margin_right">1</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="image">image7</property>
-                <property name="use_underline">True</property>
-                <property name="always_show_image">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="btn_backspace">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="receives_default">True</property>
-                <property name="valign">baseline</property>
-                <property name="margin_left">1</property>
-                <property name="margin_right">1</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="image">image8</property>
-                <property name="use_underline">True</property>
-                <property name="always_show_image">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">3</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="padding">1</property>
-            <property name="position">2</property>
-          </packing>
-        </child>
-        <child>
           <object class="GtkBox" id="box_bottom2">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
@@ -477,6 +404,99 @@
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="image">image12</property>
+                <property name="use_underline">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">3</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="padding">1</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkBox" id="box_bottom1">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="hexpand">True</property>
+            <child>
+              <object class="GtkButton" id="btn_pi">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="valign">baseline</property>
+                <property name="margin_left">1</property>
+                <property name="margin_right">1</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="image">image5</property>
+                <property name="use_underline">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">0</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_e">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="valign">baseline</property>
+                <property name="margin_left">1</property>
+                <property name="margin_right">1</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="image">image6</property>
+                <property name="use_underline">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_clear">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="valign">baseline</property>
+                <property name="margin_left">1</property>
+                <property name="margin_right">1</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="image">image7</property>
+                <property name="use_underline">True</property>
+                <property name="always_show_image">True</property>
+              </object>
+              <packing>
+                <property name="expand">True</property>
+                <property name="fill">True</property>
+                <property name="position">2</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkButton" id="btn_backspace">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="valign">baseline</property>
+                <property name="margin_left">1</property>
+                <property name="margin_right">1</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="image">image8</property>
                 <property name="use_underline">True</property>
                 <property name="always_show_image">True</property>
               </object>
@@ -739,13 +759,11 @@
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="valign">baseline</property>
-                <property name="margin_left">81</property>
+                <property name="margin_left">1</property>
                 <property name="margin_right">1</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="image">image24</property>
-                <property name="use_underline">True</property>
-                <property name="always_show_image">True</property>
               </object>
               <packing>
                 <property name="expand">True</property>
@@ -763,25 +781,5 @@
         </child>
       </object>
     </child>
-  </object>
-  <object class="GtkImage" id="image6">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">image/calc4.ico</property>
-  </object>
-  <object class="GtkImage" id="image7">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">image/calc1.ico</property>
-  </object>
-  <object class="GtkImage" id="image8">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">image/calc2.ico</property>
-  </object>
-  <object class="GtkImage" id="image9">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
-    <property name="pixbuf">image/calc6.ico</property>
   </object>
 </interface>
