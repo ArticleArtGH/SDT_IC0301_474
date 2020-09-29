@@ -1,8 +1,13 @@
 .value{
 color:blue;
+font-size:20px;
 }
 
-.group_dev,.surname_dev,.name_dev{
+.box_output{
+border: 1px solid red;
+}
+
+.name_dev{
 color:green;
 background-color:black;
 /*linear-gradient(to top, red, violet);*/
