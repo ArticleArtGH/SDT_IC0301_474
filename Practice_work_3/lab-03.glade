@@ -15,15 +15,17 @@
           <object class="GtkRadioButton" id="radio_btn_A">
             <property name="label" translatable="yes">A</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="focus_on_click">False</property>
             <property name="receives_default">False</property>
             <property name="margin_left">50</property>
             <property name="margin_right">50</property>
             <property name="margin_top">25</property>
             <property name="margin_bottom">25</property>
-            <property name="active">True</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
             <property name="draw_indicator">True</property>
-            <property name="group">radio_btn_C</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -34,14 +36,18 @@
           <object class="GtkRadioButton" id="radio_btn_B">
             <property name="label" translatable="yes">B</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="focus_on_click">False</property>
             <property name="receives_default">False</property>
             <property name="margin_left">50</property>
             <property name="margin_right">50</property>
             <property name="margin_top">25</property>
             <property name="margin_bottom">25</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
             <property name="draw_indicator">True</property>
-            <property name="group">radio_btn_C</property>
+            <property name="group">radio_btn_A</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -52,13 +58,18 @@
           <object class="GtkRadioButton" id="radio_btn_C">
             <property name="label" translatable="yes">C</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="focus_on_click">False</property>
             <property name="receives_default">False</property>
             <property name="margin_left">50</property>
             <property name="margin_right">50</property>
             <property name="margin_top">25</property>
             <property name="margin_bottom">25</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
             <property name="draw_indicator">True</property>
+            <property name="group">radio_btn_A</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -69,14 +80,18 @@
           <object class="GtkRadioButton" id="radio_btn_D">
             <property name="label" translatable="yes">D</property>
             <property name="visible">True</property>
-            <property name="can_focus">True</property>
+            <property name="sensitive">False</property>
+            <property name="can_focus">False</property>
+            <property name="focus_on_click">False</property>
             <property name="receives_default">False</property>
             <property name="margin_left">50</property>
             <property name="margin_right">50</property>
             <property name="margin_top">25</property>
             <property name="margin_bottom">25</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
             <property name="draw_indicator">True</property>
-            <property name="group">radio_btn_C</property>
+            <property name="group">radio_btn_A</property>
           </object>
           <packing>
             <property name="left_attach">1</property>
@@ -93,6 +108,8 @@
             <property name="margin_right">100</property>
             <property name="margin_top">25</property>
             <property name="margin_bottom">25</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
             <property name="draw_indicator">True</property>
           </object>
           <packing>
@@ -110,6 +127,8 @@
             <property name="margin_right">100</property>
             <property name="margin_top">25</property>
             <property name="margin_bottom">25</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
             <property name="draw_indicator">True</property>
           </object>
           <packing>
@@ -121,13 +140,18 @@
           <object class="GtkBox" id="box_result">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="margin_left">100</property>
+            <property name="margin_right">100</property>
             <property name="margin_top">25</property>
             <property name="margin_bottom">25</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="lbl_Value">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
                 <property name="label" translatable="yes">Value:</property>
               </object>
               <packing>
@@ -137,11 +161,15 @@
               </packing>
             </child>
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="lbl_res">
+                <property name="name">lbl_res_style</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="hexpand">True</property>
                 <property name="label" translatable="yes">0</property>
+                <style>
+                  <class name="color:red;"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -156,7 +184,19 @@
           </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkLabel" id="lbl_name_dev">
+            <property name="name">lbl_name_dev_style</property>
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <property name="label" translatable="yes">474 Черных Артём</property>
+            <style>
+              <class name="color:green;"/>
+            </style>
+          </object>
+          <packing>
+            <property name="left_attach">0</property>
+            <property name="top_attach">2</property>
+          </packing>
         </child>
       </object>
     </child>
