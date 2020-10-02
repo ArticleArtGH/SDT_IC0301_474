@@ -2,12 +2,17 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkImage" id="img_add">
+  <object class="GtkImage" id="img_add_item">
     <property name="visible">True</property>
     <property name="can_focus">False</property>
     <property name="stock">gtk-add</property>
   </object>
-  <object class="GtkListStore" id="mdl_items">
+  <object class="GtkImage" id="img_save">
+    <property name="visible">True</property>
+    <property name="can_focus">False</property>
+    <property name="stock">gtk-save</property>
+  </object>
+  <object class="GtkTreeStore" id="mdl_items">
     <columns>
       <!-- column-name gchararray1 -->
       <column type="gchararray"/>
@@ -26,13 +31,44 @@
       <object class="GtkBox" id="box_main">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
-        <property name="margin_left">10</property>
-        <property name="margin_right">10</property>
-        <property name="margin_top">10</property>
-        <property name="margin_bottom">10</property>
+        <property name="margin_left">1</property>
+        <property name="margin_right">1</property>
+        <property name="margin_top">1</property>
+        <property name="margin_bottom">1</property>
         <property name="hexpand">True</property>
         <property name="vexpand">True</property>
         <property name="orientation">vertical</property>
+        <child>
+          <object class="GtkGrid" id="grid_panel">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child>
+              <object class="GtkButton" id="btn_save">
+                <property name="label" translatable="yes">Save</property>
+                <property name="name">wdt_save</property>
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="receives_default">True</property>
+                <property name="margin_right">5</property>
+                <property name="margin_bottom">5</property>
+                <property name="image">img_save</property>
+                <property name="always_show_image">True</property>
+                <style>
+                  <class name="btn_save"/>
+                </style>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">0</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
         <child>
           <object class="GtkGrid" id="grid_main">
             <property name="visible">True</property>
@@ -40,27 +76,24 @@
             <property name="halign">center</property>
             <property name="valign">center</property>
             <child>
-              <object class="GtkLabel" id="lbl_name">
+              <object class="GtkEntry" id="ent_value">
                 <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="margin_left">50</property>
-                <property name="margin_right">70</property>
+                <property name="can_focus">True</property>
                 <property name="margin_bottom">5</property>
-                <property name="label" translatable="yes">Name:</property>
               </object>
               <packing>
-                <property name="left_attach">0</property>
-                <property name="top_attach">0</property>
+                <property name="left_attach">1</property>
+                <property name="top_attach">2</property>
               </packing>
             </child>
             <child>
-              <object class="GtkLabel" id="lbl_value">
+              <object class="GtkLabel" id="lbl_name">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
-                <property name="margin_left">50</property>
-                <property name="margin_right">70</property>
+                <property name="margin_left">70</property>
+                <property name="margin_right">50</property>
                 <property name="margin_bottom">5</property>
-                <property name="label" translatable="yes">Value:</property>
+                <property name="label" translatable="yes">Name</property>
               </object>
               <packing>
                 <property name="left_attach">0</property>
@@ -75,39 +108,47 @@
               </object>
               <packing>
                 <property name="left_attach">1</property>
+                <property name="top_attach">1</property>
+              </packing>
+            </child>
+            <child>
+              <object class="GtkLabel" id="lbl_file">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">70</property>
+                <property name="margin_right">50</property>
+                <property name="margin_bottom">5</property>
+                <property name="label" translatable="yes">File</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
                 <property name="top_attach">0</property>
               </packing>
             </child>
             <child>
-              <object class="GtkEntry" id="ent_value">
+              <object class="GtkEntry" id="ent_file">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="margin_bottom">5</property>
               </object>
               <packing>
                 <property name="left_attach">1</property>
-                <property name="top_attach">1</property>
+                <property name="top_attach">0</property>
               </packing>
             </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton" id="btn_add_item">
-            <property name="label" translatable="yes">Add Item</property>
-            <property name="visible">True</property>
-            <property name="can_focus">True</property>
-            <property name="receives_default">True</property>
-            <property name="valign">center</property>
-            <property name="margin_left">150</property>
-            <property name="margin_right">150</property>
-            <property name="margin_bottom">5</property>
-            <property name="image">img_add</property>
-            <property name="always_show_image">True</property>
+            <child>
+              <object class="GtkLabel" id="lbl_value">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="margin_left">70</property>
+                <property name="margin_right">50</property>
+                <property name="label" translatable="yes">Value</property>
+              </object>
+              <packing>
+                <property name="left_attach">0</property>
+                <property name="top_attach">2</property>
+              </packing>
+            </child>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -116,24 +157,20 @@
           </packing>
         </child>
         <child>
-          <object class="GtkScrolledWindow">
+          <object class="GtkButton" id="btn_add_item">
+            <property name="label" translatable="yes">Add Item</property>
+            <property name="name">wdt_add_item</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
-            <property name="hexpand">True</property>
-            <property name="vexpand">True</property>
-            <property name="shadow_type">in</property>
-            <child>
-              <object class="GtkTreeView" id="tr_v_items">
-                <property name="visible">True</property>
-                <property name="can_focus">True</property>
-                <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
-                <property name="model">mdl_items</property>
-                <child internal-child="selection">
-                  <object class="GtkTreeSelection" id="tr_s_items"/>
-                </child>
-              </object>
-            </child>
+            <property name="receives_default">True</property>
+            <property name="halign">center</property>
+            <property name="valign">center</property>
+            <property name="margin_bottom">5</property>
+            <property name="image">img_add_item</property>
+            <property name="always_show_image">True</property>
+            <style>
+              <class name="btn_add_item"/>
+            </style>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -141,7 +178,41 @@
             <property name="position">2</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkScrolledWindow" id="scrl_items">
+            <property name="height_request">250</property>
+            <property name="visible">True</property>
+            <property name="can_focus">True</property>
+            <property name="hexpand">True</property>
+            <property name="vexpand">True</property>
+            <property name="shadow_type">in</property>
+            <child>
+              <object class="GtkTreeView" id="tree_items">
+                <property name="visible">True</property>
+                <property name="can_focus">True</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="model">mdl_items</property>
+                <property name="search_column">0</property>
+                <child internal-child="selection">
+                  <object class="GtkTreeSelection"/>
+                </child>
+              </object>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">3</property>
+          </packing>
+        </child>
+        <style>
+          <class name="box_main"/>
+        </style>
       </object>
     </child>
+    <style>
+      <class name="wnd"/>
+    </style>
   </object>
 </interface>
