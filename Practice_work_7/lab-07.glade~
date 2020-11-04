@@ -8,7 +8,7 @@
       <placeholder/>
     </child>
     <child>
-      <object class="GtkDrawingArea">
+      <object class="GtkDrawingArea" id="canvas">
         <property name="visible">True</property>
         <property name="can_focus">False</property>
       </object>

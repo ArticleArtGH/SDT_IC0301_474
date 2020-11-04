@@ -17,7 +17,7 @@ cr:paint()
 
 for x = 1, 10 do
    for y = 1, 10 do
-      cr:set_source_rgb(x/10, y/10, 0.75)
+      cr:set_source_rgb(x / 10, y / 10, 0.75)
       cr:rectangle(x * 15, y * 15, 10, 10)
       cr:fill()
       end
