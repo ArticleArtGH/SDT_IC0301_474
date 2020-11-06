@@ -2,7 +2,16 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkListStore" id="tree_mdl"/>
+  <object class="GtkListStore" id="tree_mdl">
+    <columns>
+      <!-- column-name gchararray1 -->
+      <column type="gchararray"/>
+      <!-- column-name gchararray2 -->
+      <column type="gchararray"/>
+      <!-- column-name GdkPixbuf1 -->
+      <column type="GdkPixbuf"/>
+    </columns>
+  </object>
   <object class="GtkWindow" id="wnd">
     <property name="can_focus">False</property>
     <child>

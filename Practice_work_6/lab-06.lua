@@ -28,7 +28,7 @@ ui.tree:append_column(c3)
 db = sqlite.open('lab-06.db')
 --print(db)
 for row in db:nrows('select * from list') do
-print(row.name)
+print(row.name, row.valie, row.image)
 --local pb = pixbuf.new_from_file(row.image)
 
 img = pb.new_from_file(row.image)
@@ -37,7 +37,7 @@ el = ui.tree_mdl:append()
 ui.tree_mdl[el] = { [1] = row.name, [2] = row.value, [3] =  img}
 end
 
-db.close()
+db:close()
 
 ui.wnd.title = 'lab-06'
 ui.wnd.on_destroy = gtk.main_quit
