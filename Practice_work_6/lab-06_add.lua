@@ -40,13 +40,13 @@ end
 db:close()]]
 local base = 'lab-06'
 local sql = 'select * from list'
-f = io.open('sqlite3' .. base .. '.db "' .. sql .. '"')
+f = io.popen('sqlite3 ' .. base .. '.db "' .. sql .. '"')
 while true do
 	local row = f:read('*l')
 	print(row)
 	if row == nil then break end
 	local _, _, name, value, image = row:find('(%w+)|(%d+)|(.-)$')
-	img = pb.new_from_file(row.image)
+	img = pb.new_from_file(image)
 	el = ui.tree_mdl:append()
 	ui.tree_mdl[el] = { [1] = name, [2] = value, [3] = img}
 end
