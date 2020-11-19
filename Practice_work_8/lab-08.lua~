@@ -9,7 +9,7 @@ gtk.init()
 
 -- connect to redis keystore db
 local rds = require 'redis'
-local cli = rds.connect('redis.fxnode.ru', 6379)
+local cli = rds.connect('redis.fxnode.ru', 6379)--('127.0.0.1', 6379)
 
 local t = 0 -- global time
 
