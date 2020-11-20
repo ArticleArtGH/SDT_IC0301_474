@@ -1,6 +1,6 @@
---#!/usr/bin/lua5.3
+#!/usr/bin/lua5.3
 
-local lgi require 'lgi'
+local lgi = require 'lgi'
 
 local gtk = lgi.Gtk
 --local cairo = lgi.cairo
@@ -21,22 +21,22 @@ local sr = 0-- color
 local sg = 0
 local sb = 0
 
-function ui.canvas:on_button_press_event(evt)-- mouse down
+function ui.canvas:on_button_press_event(ev)-- mouse down
 print('press')
 btn = true
 ui.canvas:queue_draw()
 end
 
-function ui.canvas:on_button_release_event(evt)-- mouse up
+function ui.canvas:on_button_release_event(ev)-- mouse up
 print('release')
 btn = false
 ui.canvas:queue_draw()
 end
 
-function ui.canvas:on_motion_notify_event(evt)-- mouse move
-print(evt.x, evt.y)
-x = evt.x
-y = evt.y
+function ui.canvas:on_motion_notify_event(ev)-- mouse move
+print(ev.x, ev.y)
+x = ev.x
+y = ev.y
 ui.canvas:queue_draw()
 end
 
@@ -79,10 +79,10 @@ cr:fill()
 return true
 end]]
 
---ui.wnd.on_destroy = gtk.main_quit-- exit
-function ui.wnd:on_destroy()-- exit
+ui.wnd.on_destroy = gtk.main_quit-- exit
+--[[function ui.wnd:on_destroy()-- exit
 gtk.main_quit()
-end
+end]]
 
 ui.wnd:show_all()
 
