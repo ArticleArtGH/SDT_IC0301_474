@@ -5,7 +5,7 @@ local lgi = require 'lgi'
 local gtk = lgi.Gtk
 --local cairo = lgi.cairo
 
-gtk.init()
+gtk.init()-- It can not to use, why ? 
 
 local bld = gtk.Builder()
 bld:add_from_file('lab-09.glade')

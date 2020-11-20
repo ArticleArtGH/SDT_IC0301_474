@@ -5,7 +5,7 @@ local lgi = require 'lgi'
 local glib = lgi.GLib
 local gtk = lgi.Gtk
 
-gtk.init()
+--gtk.init()
 
 -- connect to redis keystore db
 local rds = require 'redis'
