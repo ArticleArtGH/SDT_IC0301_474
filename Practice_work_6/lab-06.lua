@@ -28,7 +28,7 @@ ui.tree:append_column(c3)
 db = sqlite.open('lab-06.db')
 --print(db)
 for row in db:nrows('select * from list') do
-print(row.name, row.valie, row.image)
+print(row.name, row.value, row.image)
 --local pb = pixbuf.new_from_file(row.image)
 
 img = pb.new_from_file(row.image)
