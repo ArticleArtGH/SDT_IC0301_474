@@ -1,3 +1,4 @@
+
 #include <lua.h>
 #include <lualib.h>
 #include <lauxlib.h>
@@ -17,7 +18,7 @@ static int c_swap(lua_State *l)
 static const struct luaL_Reg list[] =
 {
 	{"lua_swap",c_swap}
-	{null, null}
+	{NULL, NULL}
 };
 
 
