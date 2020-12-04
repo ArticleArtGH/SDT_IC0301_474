@@ -38,7 +38,7 @@ int main()
 	lua_State *l = luaL_newstate();// create new virtual machine
 	luaL_openlibs(l);// load standard libraries
 
-	luaL_loadfile(l, "clua.lua");// load script file into vm
+	luaL_loadfile(l, "lab-11.lua");// load script file into vm
 	lua_pcall(l, 0, 0, 0);// execute entire file to create global variables
 	
 	lua_pushcfunction(l, my_solve_eq);// share a C function to lua script
