@@ -3,7 +3,7 @@ CC := gcc
 LD := gcc
 
 CFLAGS := -c -O3 -Wall -MMD -MP -I/usr/include/lua5.3
-LDFLAGS := -s -Wl, --export-dinamic -llua5.3 -lm
+LDFLAGS := -s -Wl,--export-dynamic -llua5.3 -lm
 
 SRCS := lab-11-add.c
 
