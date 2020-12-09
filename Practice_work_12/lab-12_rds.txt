@@ -1,0 +1,32 @@
+local rds = require 'redis'
+local cli = rds.connect('redis.fxnode.ru', 6379)
+--cli = redis.connect('redis.fxnode.ru')
+
+local ttl = 3-- client timeout
+
+local cid = cli:lrange('clients', 0, -1)-- get a list of clients
+local now = tonumber(rds.call('TIME')[1])-- get current time
+
+for i = 1, #cid do
+
+	local ts = rds.call('GET', cid[i] .. '-ts')
+
+	local rem = true
+	if ts ~= false then-- key exists
+		if now < ts + ttl then rem = false end-- keep alive
+	end
+
+	if rem == true then
+		rds.call('LREM', 'clients', 0, cid[i])-- remove from cliets list
+
+		rds.call('DEL', cid[i] .. '-ts')-- remove keys
+		rds.call('DEL', cid[i] .. '-x')
+		rds.call('DEL', cid[i] .. '-y')
+		rds.call('DEL', cid[i] .. '-btn')
+		rds.call('DEL', cid[i] .. '-sr')
+		rds.call('DEL', cid[i] .. '-sg')
+		rds.call('DEL', cid[i] .. '-sb')
+	end
+end
+
+return cid

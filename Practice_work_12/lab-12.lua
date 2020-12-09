@@ -1,6 +1,9 @@
 lgi = require 'lgi'
+redis = require 'redis'
 
 gtk = lgi.Gtk
+glib = lgi.GLib
+
 gtk.init()
 
 bld = gtk.Builder()
@@ -10,6 +13,12 @@ ui = bld.objects
 
 id = ''
 btn_dlg = false
+x = 0
+y = 0
+btn = 0
+sr = 0
+sg = 0
+sb = 0
 
 function wnd_dlg_close()
 	ui.wnd_dlg:hide()
@@ -34,16 +43,6 @@ ui.wnd_dlg.on_destroy = gtk.main_quit
 ui.wnd_dlg:show_all()
 
 function main_part()
-redis = require 'redis'
-
-glib = lgi.GLib
-
-x = 0
-y = 0
-btn = 0
-sr = 0
-sg = 0
-sb = 0
 
 function ui.canvas:on_button_press_event(ev)
 	print('press')
@@ -119,15 +118,15 @@ ui.wnd.on_destroy = gtk.main_quit
 ui.wnd:show_all()
 
 --connect to redis server
-cli = redis.connect('redis.fxnode.ru')
+cli = redis.connect('redis.fxnode.ru', 6379)
 
 --statement on nick or indentificator
 --output current coordinate
 
+math.randomseed(os.time())--to random not to repiat, set from current time
 
 --generate random client id
 if btn_dlg == false then
-math.randomseed(os.time())--to random not to repiat, set from current time
 
 --id = ''
 
@@ -147,15 +146,15 @@ function update_keys()-- update keys
 	cli:set(id .. '-sg', sg)
 	cli:set(id .. '-sb', sb)
 
-	glib.timeout_add(glib.PRIORITY_DEFAULT, 1000, update_keys)--set timer
+	glib.timeout_add(glib.PRIORITY_DEFAULT, 1000, update_keys)--set timer 1000
 end
 
 function update_view()--put some data in window
 	ui.canvas:queue_draw()
-	glib.timeout_add(glib.PRIORITY_DEFAULT, 25, update_view)
+	glib.timeout_add(glib.PRIORITY_DEFAULT, 25, update_view)-- 25
 end
 
-glib.timeout_add(glib.PRIORITY_DEFAULT, 25, update_view)
+glib.timeout_add(glib.PRIORITY_DEFAULT, 25, update_view)--25
 
 update_keys()-- initialize keys
 cli:lpush('clients', id)-- add client to clients list
@@ -163,5 +162,3 @@ cli:lpush('clients', id)-- add client to clients list
 end
 
 gtk.main()
-
-
