@@ -1,42 +1,15 @@
+redis = require 'redis'
 lgi = require 'lgi'
 
 gtk = lgi.Gtk
-gtk.init()
+glib = lgi.GLib
+
+--gtk.init()
 
 bld = gtk.Builder()
 bld:add_from_file('lab-12.glade')
 
 ui = bld.objects
-
-id = ''
-btn_dlg = false
-
-function wnd_dlg_close()
-	ui.wnd_dlg:hide()
-	ui.wnd.on_destroy = gtk.main_quit	
-	main_part()	
-	ui.wnd:show_all()
-end
-
-function ui.btn_ok:on_clicked()
-	id = ui.ent_dlg.text
-	btn_dlg = true
-	wnd_dlg_close()
-end
-
-function ui.btn_cancel:on_clicked()
-	wnd_dlg_close()
-end
-
-ui.wnd_dlg.title = 'lab-12'
-ui.wnd.title = 'lab-12'
-ui.wnd_dlg.on_destroy = gtk.main_quit
-ui.wnd_dlg:show_all()
-
-function main_part()
-redis = require 'redis'
-
-glib = lgi.GLib
 
 x = 0
 y = 0
@@ -44,6 +17,37 @@ btn = 0
 sr = 0
 sg = 0
 sb = 0
+
+btn_dlg = -1
+function ui.btn_ok:on_clicked()
+btn_dlg = 0
+end
+function ui.btn_cancel:on_clicked()
+btn_dlg = 1
+end
+
+if btn_dlg == 0 then
+	--id = ui.ent_dlg.text
+	--ui.wnd_dlg:hide()
+	--ui.wnd_dlg.on_destroy = gtk.main_quit	
+	--ui.wnd.on_destroy = gtk.main_quit
+	ui.wnd:show_all()
+--	wnd()
+elseif btn_dlg == 1 then
+	--ui.wnd_dlg:hide()
+	--ui.wnd_dlg.on_destroy = gtk.main_quit	
+	--ui.wnd.on_destroy = gtk.main_quit
+	ui.wnd:show_all()
+--	wnd()
+end
+
+ui.wnd_dlg:show_all()
+ui.wnd.on_destroy = gtk.main_quit
+
+gtk.main()
+--function wnd()
+
+
 
 function ui.canvas:on_button_press_event(ev)
 	print('press')
@@ -126,7 +130,6 @@ cli = redis.connect('redis.fxnode.ru')
 
 
 --generate random client id
-if btn_dlg == false then
 math.randomseed(os.time())--to random not to repiat, set from current time
 
 --id = ''
@@ -134,7 +137,6 @@ math.randomseed(os.time())--to random not to repiat, set from current time
 for i = 1, 8 do--8 random symbols
 	local j = math.random(1, 16)
 	id = id .. string.sub('0123456789abcdef', j, j)--take symbol
-end
 end
 print('client id', id)
 
@@ -160,8 +162,5 @@ glib.timeout_add(glib.PRIORITY_DEFAULT, 25, update_view)
 update_keys()-- initialize keys
 cli:lpush('clients', id)-- add client to clients list
 
-end
-
 gtk.main()
-
-
+--end

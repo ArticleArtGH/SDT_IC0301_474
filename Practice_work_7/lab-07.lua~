@@ -12,13 +12,13 @@ bld:add_from_file('lab-07.glade')
 ui = bld.objects
 
 function ui.canvas:on_draw(cr)
-cr:set_source_rgb(1, 1, 1)
-cr:paint()
+cr:set_source_rgb(1, 1, 1)--set color
+cr:paint()--paint the current source within the current clip region
 
 for x = 1, 10 do
    for y = 1, 10 do
       cr:set_source_rgb(x / 10, y / 10, 0.75)
-      cr:rectangle(x * 15, y * 15, 10, 10)
+      cr:rectangle(x * 15, y * 15, 10, 10)--x,  y, width, height
       cr:fill()
       end
 end

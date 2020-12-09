@@ -1,13 +1,42 @@
-redis = require 'redis'
 lgi = require 'lgi'
 
 gtk = lgi.Gtk
-glib = lgi.GLib
+gtk.init()
 
 bld = gtk.Builder()
 bld:add_from_file('lab-12.glade')
 
 ui = bld.objects
+
+id = ''
+btn_dlg = false
+
+function wnd_dlg_close()
+	ui.wnd_dlg:hide()
+	ui.wnd.on_destroy = gtk.main_quit	
+	main_part()	
+	ui.wnd:show_all()
+end
+
+function ui.btn_ok:on_clicked()
+	id = ui.ent_dlg.text
+	btn_dlg = true
+	wnd_dlg_close()
+end
+
+function ui.btn_cancel:on_clicked()
+	wnd_dlg_close()
+end
+
+ui.wnd_dlg.title = 'lab-12'
+ui.wnd.title = 'lab-12'
+ui.wnd_dlg.on_destroy = gtk.main_quit
+ui.wnd_dlg:show_all()
+
+function main_part()
+redis = require 'redis'
+
+glib = lgi.GLib
 
 x = 0
 y = 0
@@ -31,9 +60,11 @@ function ui.canvas:on_button_release_event(ev)
 end
 
 function ui.canvas:on_motion_notify_event(ev)
-	print(x, y)
 	x = ev.x
 	y = ev.y
+    print(x, y)
+	ui.coordinate_x.label = x
+	ui.coordinate_y.label = y
 	ui.canvas:queue_draw()
 	update_keys()
 end
@@ -60,7 +91,7 @@ function ui.canvas:on_draw(cr)
 	cr:set_source_rgb(1, 1, 1, 1)
 	cr:paint()
 	
-	local cid = cli:lrange('clients', 0, -1)-- get client list
+	local cid = cli:lrange('clients', 0, -1)-- get client list ("title", log, trace statement)
 	for i = 1, #cid do-- for each client
 		--cname = tonumber(cli:get(cli[i] .. name))
 		cx = tonumber(cli:get(cid[i] .. '-x'))
@@ -90,12 +121,20 @@ ui.wnd:show_all()
 --connect to redis server
 cli = redis.connect('redis.fxnode.ru')
 
+--statement on nick or indentificator
+--output current coordinate
+
+
 --generate random client id
-math.randomseed(os.time())
-id = ''
-for i = 1, 8 do
+if btn_dlg == false then
+math.randomseed(os.time())--to random not to repiat, set from current time
+
+--id = ''
+
+for i = 1, 8 do--8 random symbols
 	local j = math.random(1, 16)
-	id = id .. string.sub('0123456789abcdef', j, j)
+	id = id .. string.sub('0123456789abcdef', j, j)--take symbol
+end
 end
 print('client id', id)
 
@@ -108,10 +147,10 @@ function update_keys()-- update keys
 	cli:set(id .. '-sg', sg)
 	cli:set(id .. '-sb', sb)
 
-	glib.timeout_add(glib.PRIORITY_DEFAULT, 1000, update_keys)
+	glib.timeout_add(glib.PRIORITY_DEFAULT, 1000, update_keys)--set timer
 end
 
-function update_view()
+function update_view()--put some data in window
 	ui.canvas:queue_draw()
 	glib.timeout_add(glib.PRIORITY_DEFAULT, 25, update_view)
 end
@@ -119,6 +158,10 @@ end
 glib.timeout_add(glib.PRIORITY_DEFAULT, 25, update_view)
 
 update_keys()-- initialize keys
-cli:lpush('clients', id)-- add client to client list
+cli:lpush('clients', id)-- add client to clients list
+
+end
 
 gtk.main()
+
+

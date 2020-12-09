@@ -24,6 +24,7 @@
     <property name="hexpand">True</property>
     <property name="vexpand">True</property>
     <property name="modal">True</property>
+    <property name="deletable">False</property>
     <child>
       <placeholder/>
     </child>
